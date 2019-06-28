@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Тесты</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+	<header>
+		<div class="block">
+			<div class="module">
+				<div class="module__title">ДАВАЙ ПОДГОТОВИМСЯ ВМЕСТЕ</div>
+			</div>
+		</div>
+	</header>
+	<div class="wrap">
+		<div class="block" id="filter">
+			<div class="module">
+				<div class="module__title">Настройки теста</div>
+				<div class="module__content">
+					<div id="test-config">
+						<label for="question-text">Вопросы</label> <br>
+						<textarea rows="10" cols="90" type="memo" id="question-text" onchange="saveMemo();"></textarea> <br>
+						
+						<label for="question-count">Количество вопросов</label> <br>
+						<input type="number" id="question-count" min="1" max="1000"  value="6"> <br>
+						
+						<label for="question-separate">Разделитель вопросов</label> <br>
+						<input type="text" id="question-separate" value="====="> <br>
+
+						<label for="right-marker">Первый символ в правильном ответе(например *)</label> <br>
+						<input type="text" id="right-marker" value="*"> <br>
+						<br><br>Показывать в выводах: <br><br>
+						<input type="checkbox" id="show-persent"><label for="show-persent">Cсоотношение правильных и не правильных ответов</label> <br>
+						<input type="checkbox" id="show-random"><label for="show-random">Вопросы в случайном порядке</label> <br>
+						<input type="checkbox" id="show-right-response"><label for="show-right-response">Правельный ответ сразу</label><br>
+						<input type="checkbox" id="show-countdown"><label for="show-countdown">Время за которое пройден тест</label><br>
+						<input type="checkbox" id="show-progress"><label for="show-progress">Количество ответов</label><br>
+					</div>
+					<div class="module__buttons">
+						<div class="green-btn btn" onclick="test.start()">Начать тест</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block" id="progress" style="display: none;">
+			<div class="module" id="progress__bar">
+				<div class="module__title">выполнено: <span>0/0</span></div>
+				<div class="module__content"> </div>
+			</div>
+			<div class="module" id="progress__table">
+				<div class="module__content"></div>
+			</div>
+		</div>
+		<div class="block" id="test">
+			<div class="module" style="display: none;">
+				<div class="module__title">Тест</div>
+				<div class="module__content">
+					<div id="questions"></div>
+					<div id="stat"></div>
+					<div class="module__buttons">
+						<div class="red-btn btn" onclick="test.stop()">Завершить тест</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer></footer>
+</body>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/load.js"></script>
+	<script type="text/javascript" src="js/spliter.js"></script>
+	<script type="text/javascript" src="js/result.js"></script>
+</html>
