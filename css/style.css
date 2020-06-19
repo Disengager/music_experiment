@@ -12,13 +12,13 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 20px 0 0 0;
     padding: 30px 0 30px 0;
+    flex-wrap: wrap;
 }
 
 header .block {
     padding: 0px;
-    margin: 10px 0 0 0;
+    margin: 0px 0 0 0;
 }
 
 .module {
@@ -31,17 +31,115 @@ header .block {
     font-weight: 700;
     margin: 10px 0 10px 0;
     text-align: center;
+    display: block;
+    width: 100%;
 }
 
 .module__buttons {
     display: flex;
     justify-content: center;
     padding: 40px 0 10px 0;
+    flex-direction: column;
+    align-items: center;
+}
+.right {
+    display: none;
+}
+
+#header {
+    background-color: #292929;
+    color: white;
+    height: 97px;
+    display: flex;
+    align-items: center;
 }
 
 #filter {
-    background-color: #c1c1c1;
+    background-color: #f3f3f3;
 }
+
+#current {
+    background-color: #292929;
+    color: white;
+    height: calc(100vh - 30px);
+}
+
+#test-config {
+    display: flex;
+}
+
+.playlist {
+    height: 100%;
+    width: 390px;
+    background-color: #292929;
+    color: white;
+}
+
+.playlist_item {
+    padding: 12px 0 10px 11px;
+    border-bottom: 1px solid #828282;
+}
+
+.plus_button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 900;
+    padding-right: 11px;
+    width: 10px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+}
+
+.plus_button:hover {
+    cursor: pointer;
+    color: #0e7ef3;
+    font-size: 16px;
+}
+.play-button {
+    display: inline-flex;
+    align-items: center;
+    background: url(../img/icons8-play-24.png) left center no-repeat;
+    background-size: 20px;
+    padding: 15px 10px 15px 30px;
+    box-sizing: border-box;
+    width: 538px;
+    height: 15px;
+    border-color: transparent transparent transparent #202020;
+    transition: 100ms all ease;
+    cursor: pointer;
+     -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+}
+
+.pause-button {
+    display: inline-flex;
+    align-items: center;
+    background: url(../img/icons8-pause-24.png) left center no-repeat;
+    padding: 15px 10px 15px 30px;
+    box-sizing: border-box;
+    width: 538px;
+    height: 15px;
+    border-color: transparent transparent transparent #202020;
+    transition: 100ms all ease;
+    cursor: pointer;
+    color: #0e7ef3;
+     -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+}
+
 
 .btn {
     padding: 10px;
@@ -59,6 +157,11 @@ header .block {
     color: #353535;
 }
 
+.blue-btn {
+    background-color: #8bbbe8;
+}
+
+
 .green-btn:hover {
     background-color: #eaeaea;
 }
@@ -73,8 +176,10 @@ header .block {
 }
 
 input, textarea {
-    padding: 10px 10px 10px 5px;
-    margin: 0 0 10px 0;
+    padding: 20px 20px 20px 10px;
+    margin: 13px 0 10px 0;
+    border: none;
+}
 }
 
 label {
@@ -196,3 +301,4 @@ label {
     width: 41px;
     text-align: center;
 }
+

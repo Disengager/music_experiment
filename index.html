@@ -1,73 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Тесты</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Эксперимент</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css?v=2">
 	<script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	<header>
-		<div class="block">
+		<div class="block" id="header">
 			<div class="module">
-				<div class="module__title">ДАВАЙ ПОДГОТОВИМСЯ ВМЕСТЕ</div>
+				<div class="module__title">ЭКСПЕРЕМЕНТАЛЬНАЯ ФОРМА</div>
 			</div>
 		</div>
 	</header>
 	<div class="wrap">
 		<div class="block" id="filter">
 			<div class="module">
-				<div class="module__title">Настройки теста</div>
+				<div class="module__title">Пожалуйста заполните</div>
 				<div class="module__content">
 					<div id="test-config">
-						<label for="question-text">Вопросы</label> <br>
-						<textarea rows="10" cols="90" type="memo" id="question-text" onchange="saveMemo();"></textarea> <br>
-						
-						<label for="question-count">Количество вопросов</label> <br>
-						<input type="number" id="question-count" min="1" max="1000"  value="6"> <br>
-						
-						<label for="question-separate">Разделитель вопросов</label> <br>
-						<input type="text" id="question-separate" value="====="> <br>
+						<div id="test-config-left">
+							<label for="user_name">Как вас зовут?</label> <br>
+							<input type="text" id="user_name" name="user_name" style="width: 220px;" placeholder="Ваше имя (реальное или не очень)"> <br><br>
 
-						<label for="right-marker">Первый символ в правильном ответе(например *)</label> <br>
-						<input type="text" id="right-marker" value="*"> <br>
-						<br><br>Показывать в выводах: <br><br>
-						<input type="checkbox" id="show-persent"><label for="show-persent">Cсоотношение правильных и не правильных ответов</label> <br>
-						<input type="checkbox" id="show-random"><label for="show-random">Вопросы в случайном порядке</label> <br>
-						<input type="checkbox" id="show-right-response"><label for="show-right-response">Правельный ответ сразу</label><br>
-						<input type="checkbox" id="show-countdown"><label for="show-countdown">Время за которое пройден тест</label><br>
-						<input type="checkbox" id="show-progress"><label for="show-progress">Количество ответов</label><br>
+							<label>Какой у вас гендер?</label> <br>
+							<input type="radio" name="gener" id="gender_1" value="Мужчина"><label for="gender_1" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" > Мужчина</label> <br>
+							<input type="radio" name="gener" id="gender_2" value="Женщина"><label for="gender_2" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" > Женщина</label> <br>
+							<input type="radio" name="gener" id="gender_3" value="Другое"><label for="gender_3" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" > Другое</label> <br><br>
+
+							<label for="age_label">Сколько вам лет?</label> <br>
+							<input type="number" id="age" style="width: 150px;" min="1" max="80"  placeholder="Ваш возраст (в годах)"> <br><br>
+
+							<label for="user_name">Выберите песни, которые будут играть во время теста</label> <br><br>
+							<div class="audio_list">
+								<audio id="player_music_1" src="./music/Lord El-Melloi II Case Files ED Full Hibari by ASCA.mp3"></audio> 
+								<div class="plus_button" for="player_music_1" onclick="test_creater.set_to_playlist(this);">+</div><span class="play-button" onclick="test_creater.play_form_music(this);" id="music_1">Lord El-Melloi II Case Files ED Full Hibari by ASCA </span><br>
+
+								<audio id="player_music_2" src="./music/Lion - Macross Frontier Op 2 Full version.mp3"></audio> 
+								<div class="plus_button" for="player_music_2" onclick="test_creater.set_to_playlist(this);">+</div><span class="play-button" onclick="test_creater.play_form_music(this);" id="music_2">Lion - Macross Frontier Op 2 Full version</span><br>
+
+								<audio id="player_music_3" src="./music/Last Stardust ~English Lyrics.mp3"></audio> 
+								<div class="plus_button" for="player_music_3" onclick="test_creater.set_to_playlist(this);">+</div><span class="play-button" onclick="test_creater.play_form_music(this);" id="music_3">Last Stardust ~English Lyrics</span><br>
+
+								<audio id="player_music_4" src="./music/Lord El-Melloi II Case Files ED Full Hibari by ASCA.mp3"></audio> 
+								<div class="plus_button" for="player_music_4" onclick="test_creater.set_to_playlist(this);">+</div><span class="play-button" onclick="test_creater.play_form_music(this);" id="music_4">Lord El-Melloi II Case Files ED Full Hibari by ASCA </span><br>
+							</div>			
+						</div>
+						<div id="test-config-right">
+							Ваш плейлист:
+							<div class="playlist"></div>
+						</div>
+						
 					</div>
 					<div class="module__buttons">
-						<div class="green-btn btn" onclick="test.start()">Начать тест</div>
+						<div class="green-btn btn" onclick="test_creater.start()">Начать</div> <br>
+						<div class="green-btn btn" onclick="test_creater.next()">Next</div><br>
+						<div class="green-btn btn" onclick="test.start()">Начать</div><br>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="block" id="progress" style="display: none;">
-			<div class="module" id="progress__bar">
-				<div class="module__title">выполнено: <span>0/0</span></div>
-				<div class="module__content"> </div>
+		<div class="block" id="current" style=""></div>
+		<div class="block" id="rotation" style="display: none;">
+			<div class="module" id="manual_1">
+				<div class="module__title">Задача на ментальное вращение фигуры</div>
+				<div class="module__content"><span>это текст текст текст</span><br><br><span>Нажимте левую стрелку или правую стрелку чтобы продолжить.</span></div>
+				<div class="right">0</div>
 			</div>
-			<div class="module" id="progress__table">
-				<div class="module__content"></div>
+			<div class="module" id="manual_2">
+				<div class="module__title"></div>
+				<div class="module__content"><span>Передохните несколько минут и можете приступать к последнему заданию. </span><br><br><span>Нажимте левую стрелку или правую стрелку чтобы началь следующее задание.</span></div>
+				<div class="right">0</div>
 			</div>
-		</div>
-		<div class="block" id="test">
-			<div class="module" style="display: none;">
-				<div class="module__title">Тест</div>
+			<div class="module" id="rot_1">
+				<div class="module__title"></div>
 				<div class="module__content">
-					<div id="questions"></div>
-					<div id="stat"></div>
-					<div class="module__buttons">
-						<div class="red-btn btn" onclick="test.stop()">Завершить тест</div>
+					<div class="rot_screen">
+						<div class="left_side"></div>
+						<div class="right_side"></div>
 					</div>
+					<span>Нажимте левую стрелку когда фигуры одинаковые и правую стрелку когда разные.</span>
 				</div>
+				<div class="right">1</div>
 			</div>
+		</div>
+		<div class="block" id="toav" style="display: none;">
+			<div class="module" id="toav_manual_1">
+				<div class="module__title">T.O.A.V.</div>
+				<div class="module__content"><span>это текст текст текст</span><br><br><span>Нажимте левую стрелку или правую стрелку чтобы продолжить.</span></div>
+				<div class="right">0</div>
+			</div>
+		</div>
+		<div class="block" id="playlist_block" style="display: none;">
+			<audio id="player_playlist"></audio> 
 		</div>
 	</div>
+</div>
 	<footer></footer>
 </body>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/main.js?v=2"></script>
 	<script type="text/javascript" src="js/load.js"></script>
 	<script type="text/javascript" src="js/spliter.js"></script>
 	<script type="text/javascript" src="js/result.js"></script>
