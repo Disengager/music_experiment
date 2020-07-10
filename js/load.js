@@ -11,8 +11,24 @@ $( document ).ready(function() {
     document.getElementById('player_playlist').addEventListener("ended", function(e) {
       test_creater.play_from_playlist();
     }, false);
+
 });
 
+function reverse(i) {
+	if(i == 1)
+		return 6
+	if(i == 2)
+		return 5
+	if(i == 3)
+		return 4
+	if(i == 4)
+		return 3
+	if(i == 5)
+		return 2
+	if(i == 6)
+		return 1
+
+}
 
 function findGetParameter(parameterName) {
     var result = null,
